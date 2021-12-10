@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/Black Hole.png</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/Bloom.fx</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/Bullet.png</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/explosion-01.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/explosion-02.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/explosion-03.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/explosion-04.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/explosion-05.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/explosion-06.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/explosion-07.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/explosion-08.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/Music.mp3</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/Particle.png</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/Player.png</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/Pointer.png</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/Seeker.png</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/shoot-01.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/shoot-02.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/shoot-03.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/shoot-04.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/spawn-01.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/spawn-02.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/spawn-03.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/spawn-04.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/spawn-05.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/spawn-06.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/spawn-07.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/spawn-08.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/Wanderer.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

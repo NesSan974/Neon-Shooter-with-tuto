@@ -1,0 +1,221 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+
+using Bloom_Sample;
+
+using System;
+/*
+
+https://gamedevelopment.tutsplus.com/tutorials/search/xna
+
+*/
+
+
+
+
+
+namespace neonShooter
+{
+    public class Game1 : Game
+    {
+        private GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
+
+        public static ParticleManager<ParticleState> ParticleManager { get; private set; }
+        RenderTarget2D renderTarget;
+
+
+
+
+        private BloomFilter _bloomFilter;
+
+
+        private int _width = 1300;
+        private int _height = 800;
+
+
+
+
+
+
+        public Game1()
+        {
+            _graphics = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content";
+            IsMouseVisible = false;
+
+            _graphics.GraphicsProfile = GraphicsProfile.HiDef;
+            _graphics.ApplyChanges();
+
+
+
+            Instance = this;
+        }
+
+
+
+
+
+        protected override void Initialize()
+        {
+
+
+            _graphics.PreferredBackBufferHeight = _height;
+            _graphics.PreferredBackBufferWidth = _width;
+
+            _graphics.ApplyChanges();
+            // TODO: Add your initialization logic here
+
+            renderTarget = new RenderTarget2D(
+                                                GraphicsDevice, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight,
+                                                false, GraphicsDevice.PresentationParameters.BackBufferFormat,
+                                                DepthFormat.Depth24);
+
+
+
+            base.Initialize();
+            EntityManager.Add(PlayerShip.Instance);
+
+
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(Sound.Music);
+
+
+
+            ParticleManager = new ParticleManager<ParticleState>(1024 * 20, ParticleState.UpdateParticle);
+        }
+
+        protected override void LoadContent()
+        {
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            Art.Load(Content);
+            Sound.Load(Content);
+
+            //Load our Bloomfilter!
+            _bloomFilter = new BloomFilter();
+            _bloomFilter.Load(GraphicsDevice, Content, _width, _height);
+
+            _bloomFilter.BloomPreset = BloomFilter.BloomPresets.SuperWide;
+            _bloomFilter.BloomStrengthMultiplier = 1f; 
+            _bloomFilter.BloomThreshold = 0f; // jsp ce que c'est, mais ca rend stylé
+
+
+
+        }
+
+
+        protected override void UnloadContent()
+        {
+            _bloomFilter.Dispose();
+        }
+
+        protected override void Update(GameTime gameTime)
+        {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
+
+
+            Input.Update();
+
+            EnemySpawner.Update();
+
+            EntityManager.Update();
+
+            ParticleManager.Update();
+
+
+            base.Update(gameTime);
+        }
+
+        protected override void Draw(GameTime gameTime)
+        {
+
+
+
+
+
+            _graphics.GraphicsDevice.SetRenderTarget(renderTarget);
+
+
+
+
+
+            // GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
+
+
+
+            GraphicsDevice.Clear(Color.Black);
+
+
+
+
+
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
+
+
+
+            EntityManager.Draw(_spriteBatch);
+
+            _spriteBatch.Draw(Art.Pointer, Input.MousePosition, Color.White);
+
+
+
+            ParticleManager.Draw(_spriteBatch);
+
+
+
+            _spriteBatch.End();
+
+
+            _graphics.GraphicsDevice.SetRenderTarget(null);
+
+
+
+            Texture2D bloom = _bloomFilter.Draw(renderTarget, _width, _height);
+
+            _graphics.GraphicsDevice.SetRenderTarget(null);
+            // _graphics.GraphicsDevice.SetRenderTargets(null);
+
+
+
+            GraphicsDevice.Clear(Color.Transparent);
+
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.Additive);
+
+
+
+            _spriteBatch.Draw(renderTarget, Vector2.Zero, new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(bloom, new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), Color.White);
+
+
+            _spriteBatch.End();
+
+
+            base.Draw(gameTime);
+        }
+
+
+
+
+
+        public static Game1 Instance { get; private set; }
+        public static Viewport Viewport { get { return Instance.GraphicsDevice.Viewport; } }
+        public static Vector2 ScreenSize { get { return new Vector2(Viewport.Width, Viewport.Height); } }
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+}

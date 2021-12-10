@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>/home/quentin/Projet/monogame/neonShooter/Content/Bloom.fx</SourceFile>
+  <SourceTime>2021-12-09T21:47:17.268+01:00</SourceTime>
+  <DestFile>/home/quentin/Projet/monogame/neonShooter/Content/bin/DesktopGL/Bloom.xnb</DestFile>
+  <DestTime>2021-12-09T21:47:42.3846947+01:00</DestTime>
+  <Importer>EffectImporter</Importer>
+  <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
+  <Processor>EffectProcessor</Processor>
+  <ProcessorTime>2020-08-10T18:17:54+02:00</ProcessorTime>
+  <Parameters>
+    <Key>DebugMode</Key>
+    <Value>Auto</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>
