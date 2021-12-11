@@ -76,7 +76,7 @@ namespace neonShooter
 
                 Sound.Shot.Play(0.2f, rand.NextFloat(-0.2f, 0.2f), 0);
 
-                
+
             }
 
             if (cooldownRemaining > 0)
@@ -93,7 +93,24 @@ namespace neonShooter
         public void Kill()
         {
             framesUntilRespawn = 60;
-        }
 
+            Color yellow = new Color(0.8f, 0.8f, 0.4f);
+
+            for (int i = 0; i < 500; i++)
+            {
+                float speed = 18f * (1f - 1 / rand.NextFloat(1f, 10f));
+                Color color = Color.Lerp(Color.White, yellow, rand.NextFloat(0, 1));
+                var state = new ParticleState()
+                {
+                    Velocity = rand.NextVector2(speed, speed),
+                    Type = ParticleType.None,
+                    LengthMultiplier = 1
+                };
+
+                Game1.ParticleManager.CreateParticle(Art.LineParticle, Position, color, 190, new Vector2(1.5f), state);
+
+            }
+
+        }
     }
 }

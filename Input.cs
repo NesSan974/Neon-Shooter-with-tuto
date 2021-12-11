@@ -46,7 +46,7 @@ namespace neonShooter
     public static bool WasButtonPressed(Buttons button)
     {
         return lastGamepadState.IsButtonUp(button) && gamepadState.IsButtonDown(button);
-    }
+    } 
  
     public static Vector2 GetMovementDirection()
     {

@@ -23,6 +23,11 @@ namespace neonShooter
 
         public static void UpdateParticle(ParticleManager<ParticleState>.Particle particle)
         {
+
+
+
+
+
             var vel = particle.State.Velocity;
 
             particle.Position += vel;
@@ -50,6 +55,29 @@ namespace neonShooter
             particle.Color.A = (byte)(255 * alpha);
 
             particle.Scale.X = particle.State.LengthMultiplier * Math.Min(Math.Min(1f, 0.2f * speed + 0.1f), alpha);
+
+
+
+
+
+
+
+            
+
+            if (particle.State.Type != ParticleType.IgnoreGravity)
+            {
+                foreach (var blackHole in EntityManager.blackHoles)
+                {
+                    var dPos = blackHole.Position - pos;
+                    float distance = dPos.Length();
+                    var n = dPos / distance;
+                    vel += 10000 * n / (distance * distance + 10000);
+
+                    // add tangential acceleration for nearby particles
+                    if (distance < 400)
+                        vel += 45 * new Vector2(n.Y, -n.X) / (distance + 100);
+                }
+            }
 
 
 

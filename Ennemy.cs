@@ -19,7 +19,6 @@ namespace neonShooter
         public bool IsActive { get { return timeUntilStart <= 0; } }
 
 
-
         private List<IEnumerator<int>> behaviours = new List<IEnumerator<int>>();
 
 
@@ -30,7 +29,6 @@ namespace neonShooter
             var d = Position - other.Position;
             Velocity += 10 * d / (d.LengthSquared() + 1);
         }
-
 
         private void AddBehaviour(IEnumerable<int> behaviour)
         {
@@ -163,7 +161,7 @@ namespace neonShooter
                     Type = ParticleType.Enemy,
                     LengthMultiplier = 1f
                 };
-                
+
                 Color color = Color.Lerp(color1, color2, rand.NextFloat(0, 1));
                 Game1.ParticleManager.CreateParticle(Art.LineParticle, Position, color, 190, new Vector2(1.5f), state);
             }
@@ -184,6 +182,8 @@ namespace neonShooter
     {
         static Random rand = new Random();
         static float inverseSpawnChance = 60;
+        static float maxBlackHole = 2f;
+
 
         public static void Update()
         {
@@ -194,11 +194,19 @@ namespace neonShooter
 
                 if (rand.Next((int)inverseSpawnChance) == 0)
                     EntityManager.Add(Enemy.CreateWanderer(GetSpawnPosition()));
+
+                if (EntityManager.blackHoles.Count < (int)maxBlackHole && rand.Next((int)inverseSpawnChance) == 0)
+                    EntityManager.Add(new BlackHole(GetSpawnPosition()));
+
             }
 
             // slowly increase the spawn rate as time progresses
             if (inverseSpawnChance > 20)
-                inverseSpawnChance -= 0.005f;
+            {
+                inverseSpawnChance -= 0.004f;
+                maxBlackHole += 0.0006f;
+            }
+
         }
 
         private static Vector2 GetSpawnPosition()

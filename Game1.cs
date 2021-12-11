@@ -50,7 +50,6 @@ namespace neonShooter
             _graphics.ApplyChanges();
 
 
-
             Instance = this;
         }
 
@@ -118,7 +117,7 @@ namespace neonShooter
                 Exit();
 
 
-            Input.Update();
+            Input.Update(); 
 
             EnemySpawner.Update();
 
@@ -130,8 +129,11 @@ namespace neonShooter
             base.Update(gameTime);
         }
 
+        public static GameTime gt {get; set;}
+
         protected override void Draw(GameTime gameTime)
         {
+            gt = gameTime;
 
 
             _graphics.GraphicsDevice.SetRenderTarget(renderTarget);

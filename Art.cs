@@ -14,6 +14,7 @@ namespace neonShooter
         public static Texture2D Bullet { get; private set; }
         public static Texture2D Pointer { get; private set; }
         public static Texture2D LineParticle { get; private set; }
+        public static Texture2D BlackHole { get; private set; }
 
 
 
@@ -25,6 +26,7 @@ namespace neonShooter
             Bullet = content.Load<Texture2D>("Bullet");
             Pointer = content.Load<Texture2D>("Pointer");
             LineParticle = content.Load<Texture2D>("Particle");
+            BlackHole = content.Load<Texture2D>("Black Hole");
 
 
         }

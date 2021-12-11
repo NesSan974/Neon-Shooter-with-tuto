@@ -65,6 +65,7 @@ namespace neonShooter
 
         static List<Enemy> enemies = new List<Enemy>();
         static List<Bullet> bullets = new List<Bullet>();
+        static public List<BlackHole> blackHoles = new List<BlackHole>();
 
 
         public static int Count { get { return entities.Count; } }
@@ -84,6 +85,8 @@ namespace neonShooter
                 bullets.Add(entity as Bullet);
             else if (entity is Enemy)
                 enemies.Add(entity as Enemy);
+            else if (entity is BlackHole)
+                blackHoles.Add(entity as BlackHole);
         }
 
 
@@ -92,10 +95,6 @@ namespace neonShooter
             float radius = a.Radius + b.Radius;
             return !a.IsExpired && !b.IsExpired && Vector2.DistanceSquared(a.Position, b.Position) < radius * radius;
         }
-
-
-
-
 
 
         static void HandleCollisions()
@@ -129,9 +128,44 @@ namespace neonShooter
                 {
                     PlayerShip.Instance.Kill();
                     enemies.ForEach(x => x.WasShot());
+                    blackHoles.ForEach(x => x.Kill());
+
                     break;
                 }
             }
+
+
+            // handle collisions with black holes
+            for (int i = 0; i < blackHoles.Count; i++)
+            {
+                for (int j = 0; j < enemies.Count; j++)
+                    if (enemies[j].IsActive && IsColliding(blackHoles[i], enemies[j]))
+                        enemies[j].WasShot();
+
+                for (int j = 0; j < bullets.Count; j++)
+                {
+                    if (IsColliding(blackHoles[i], bullets[j]))
+                    {
+                        bullets[j].IsExpired = true;
+                        blackHoles[i].WasShot();
+                        
+                    }
+                }
+
+                if (IsColliding(PlayerShip.Instance, blackHoles[i]))
+                {
+                    PlayerShip.Instance.Kill();
+                    enemies.ForEach(x => x.WasShot());
+                    blackHoles.ForEach(x => x.Kill());
+                    break;
+                }
+            }
+        }
+
+
+        public static IEnumerable<Entity> GetNearbyEntities(Vector2 position, float radius)
+        {
+            return entities.Where(x => Vector2.DistanceSquared(position, x.Position) < radius * radius);
         }
 
 
@@ -156,6 +190,7 @@ namespace neonShooter
 
             bullets = bullets.Where(x => !x.IsExpired).ToList();
             enemies = enemies.Where(x => !x.IsExpired).ToList();
+            blackHoles = blackHoles.Where(x => !x.IsExpired).ToList();
 
 
 
@@ -166,7 +201,6 @@ namespace neonShooter
             foreach (var entity in entities)
                 entity.Draw(spriteBatch);
         }
-
 
 
     }
