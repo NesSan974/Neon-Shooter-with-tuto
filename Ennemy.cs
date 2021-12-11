@@ -139,8 +139,6 @@ namespace neonShooter
             IsExpired = true;
             Sound.Explosion.Play(0.5f, rand.NextFloat(-0.2f, 0.2f), 0);
 
-
-
             float hue1 = rand.NextFloat(0, 6);
             float hue2 = (hue1 + rand.NextFloat(0, 2)) % 6f;
             Color color1 = Extensions.HSVToColor(hue1, 0.5f, 1);
@@ -161,11 +159,11 @@ namespace neonShooter
 
                 var state = new ParticleState()
                 {
-                    Velocity = rand.NextVector2(speed, speed),
+                    Velocity = rand.NextVector2(speed, speed), //dans NextVector2(), l'angle est full aleatoir,
                     Type = ParticleType.Enemy,
                     LengthMultiplier = 1f
                 };
-
+                
                 Color color = Color.Lerp(color1, color2, rand.NextFloat(0, 1));
                 Game1.ParticleManager.CreateParticle(Art.LineParticle, Position, color, 190, new Vector2(1.5f), state);
             }

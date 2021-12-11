@@ -6,13 +6,13 @@ using Microsoft.Xna.Framework.Input;
 using Bloom_Sample;
 
 using System;
+
+
 /*
 
 https://gamedevelopment.tutsplus.com/tutorials/search/xna
 
 */
-
-
 
 
 
@@ -99,7 +99,7 @@ namespace neonShooter
             _bloomFilter.Load(GraphicsDevice, Content, _width, _height);
 
             _bloomFilter.BloomPreset = BloomFilter.BloomPresets.SuperWide;
-            _bloomFilter.BloomStrengthMultiplier = 1f; 
+            _bloomFilter.BloomStrengthMultiplier = 1f;
             _bloomFilter.BloomThreshold = 0f; // jsp ce que c'est, mais ca rend stylé
 
 
@@ -134,23 +134,10 @@ namespace neonShooter
         {
 
 
-
-
-
             _graphics.GraphicsDevice.SetRenderTarget(renderTarget);
 
 
-
-
-
-            // GraphicsDevice.DepthStencilState = new DepthStencilState() { DepthBufferEnable = true };
-
-
-
             GraphicsDevice.Clear(Color.Black);
-
-
-
 
 
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
@@ -161,8 +148,6 @@ namespace neonShooter
 
             _spriteBatch.Draw(Art.Pointer, Input.MousePosition, Color.White);
 
-
-
             ParticleManager.Draw(_spriteBatch);
 
 
@@ -170,14 +155,15 @@ namespace neonShooter
             _spriteBatch.End();
 
 
+            int w = _width;
+            int h = _height;
+
+            //Default 
+            //_bloomFilter.BloomUseLuminance = true;
+
+            Texture2D bloom = _bloomFilter.Draw(renderTarget, w, h);
+
             _graphics.GraphicsDevice.SetRenderTarget(null);
-
-
-
-            Texture2D bloom = _bloomFilter.Draw(renderTarget, _width, _height);
-
-            _graphics.GraphicsDevice.SetRenderTarget(null);
-            // _graphics.GraphicsDevice.SetRenderTargets(null);
 
 
 
@@ -204,11 +190,6 @@ namespace neonShooter
         public static Game1 Instance { get; private set; }
         public static Viewport Viewport { get { return Instance.GraphicsDevice.Viewport; } }
         public static Vector2 ScreenSize { get { return new Vector2(Viewport.Width, Viewport.Height); } }
-
-
-
-
-
 
 
 

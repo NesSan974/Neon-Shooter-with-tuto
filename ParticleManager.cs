@@ -28,7 +28,6 @@ namespace neonShooter
             particle.Position += vel;
             particle.Orientation = vel.ToAngle();
 
-
             var pos = particle.Position;
             int width = (int)Game1.ScreenSize.X;
             int height = (int)Game1.ScreenSize.Y;
@@ -181,7 +180,7 @@ namespace neonShooter
 
 
 
-        public void Update() //
+        public void Update()
         {
             int removalCount = 0;
             for (int i = 0; i < particleList.Count; i++)
