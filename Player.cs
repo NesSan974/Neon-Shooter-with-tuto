@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 
-
 using System;
 
 namespace neonShooter
@@ -66,6 +65,7 @@ namespace neonShooter
 
                 float randomSpread = rand.NextFloat(-0.04f, 0.04f) + rand.NextFloat(-0.04f, 0.04f);
                 Vector2 vel = MathUtil.FromPolar(aimAngle + randomSpread, 11f);
+                
                 //11f = bullet speed  | une coordonné polair, est désigné par le fait que n'importe quel point se fait avec un angle et une distance
 
                 Vector2 offset = Vector2.Transform(new Vector2(25, -8), aimQuat);

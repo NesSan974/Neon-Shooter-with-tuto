@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 
 
@@ -34,7 +35,31 @@ namespace neonShooter
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
+
+            /*
+
+            Color[] tcolor = new Color[image.Width * image.Height];
+            image.GetData<Color>(tcolor);
+
+            for (int i = 0; i < tcolor.Length; i++)
+            {
+
+
+                if (tcolor[i] != new Color(0,0,0,0))
+                {
+                    tcolor[i] = Color.White;
+                }
+
+            }
+
+            image.SetData<Color>(tcolor);
+
+
+
+            */
+
             spriteBatch.Draw(image, Position, null, color, Orientation, Size / 2f, 1f, 0, 0);
+
         }
     }
 
@@ -148,7 +173,7 @@ namespace neonShooter
                     {
                         bullets[j].IsExpired = true;
                         blackHoles[i].WasShot();
-                        
+
                     }
                 }
 

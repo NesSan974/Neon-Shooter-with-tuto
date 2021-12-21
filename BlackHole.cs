@@ -8,12 +8,6 @@ using System;
 
 
 
-
-
-
-
-
-
 namespace neonShooter
 {
 

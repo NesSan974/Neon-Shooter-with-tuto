@@ -25,9 +25,6 @@ namespace neonShooter
         {
 
 
-
-
-
             var vel = particle.State.Velocity;
 
             particle.Position += vel;
@@ -48,6 +45,7 @@ namespace neonShooter
 
 
 
+
             float speed = vel.Length();
             float alpha = Math.Min(1, Math.Min(particle.PercentLife * 2, speed * 1f));
             alpha *= alpha;
@@ -55,9 +53,6 @@ namespace neonShooter
             particle.Color.A = (byte)(255 * alpha);
 
             particle.Scale.X = particle.State.LengthMultiplier * Math.Min(Math.Min(1f, 0.2f * speed + 0.1f), alpha);
-
-
-
 
 
 

@@ -174,10 +174,6 @@ namespace neonShooter
 
 
 
-
-
-
-
     static class EnemySpawner
     {
         static Random rand = new Random();

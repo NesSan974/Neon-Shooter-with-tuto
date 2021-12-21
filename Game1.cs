@@ -79,7 +79,9 @@ namespace neonShooter
 
 
             MediaPlayer.IsRepeating = true;
+            MediaPlayer.Volume = 0.6f;
             MediaPlayer.Play(Sound.Music);
+            
 
 
 
