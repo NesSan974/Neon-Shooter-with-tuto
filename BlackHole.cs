@@ -119,6 +119,8 @@ namespace neonShooter
                 };
 
                 Game1.ParticleManager.CreateParticle(Art.LineParticle, pos, color, 190, new Vector2(1.5f), state);
+                
+                Game1.Grid.ApplyImplosiveForce((float)Math.Sin(sprayAngle / 2) * 10 + 20, new Vector3 (Position, 0), 200);
             }
 
             // rotate the spray direction

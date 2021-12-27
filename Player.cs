@@ -86,8 +86,12 @@ namespace neonShooter
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (!IsDead)
+            if (!IsDead) {
                 base.Draw(spriteBatch);
+            } else {
+                Game1.Grid.ApplyDirectedForce(new Vector3(0, 0, 5000), new Vector3(Position, 0), 50);
+            }
+                
         }
 
         public void Kill()

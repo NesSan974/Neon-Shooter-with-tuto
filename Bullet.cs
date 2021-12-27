@@ -37,6 +37,10 @@ namespace neonShooter
                     Game1.ParticleManager.CreateParticle(Art.LineParticle, Position, Color.LightBlue, 50, Vector2.One,new ParticleState() { Velocity = rand.NextVector2(0, 9), Type = ParticleType.Bullet, LengthMultiplier = 1 });
 
             }
+
+            
+
+            Game1.Grid.ApplyExplosiveForce(0.5f * Velocity.Length(), new Vector3 (Position.X, Position.Y, 0), 80);
         }
     }
 }

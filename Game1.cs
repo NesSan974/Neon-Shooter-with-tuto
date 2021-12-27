@@ -20,11 +20,15 @@ namespace neonShooter
 {
     public class Game1 : Game
     {
-        private GraphicsDeviceManager _graphics;
+        public static GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
         public static ParticleManager<ParticleState> ParticleManager { get; private set; }
         RenderTarget2D renderTarget;
+
+        const int maxGridPoints = 1600;
+        Vector2 gridSpacing ;
+        internal static Grid Grid;
 
 
 
@@ -67,6 +71,10 @@ namespace neonShooter
             _graphics.ApplyChanges();
             // TODO: Add your initialization logic here
 
+            gridSpacing = new Vector2((float)Math.Sqrt(Viewport.Width * Viewport.Height / maxGridPoints));
+            Grid = new Grid(Viewport.Bounds, gridSpacing);
+
+
             renderTarget = new RenderTarget2D(
                                                 GraphicsDevice, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight,
                                                 false, GraphicsDevice.PresentationParameters.BackBufferFormat,
@@ -81,7 +89,7 @@ namespace neonShooter
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Volume = 0.6f;
             MediaPlayer.Play(Sound.Music);
-            
+
 
 
 
@@ -119,7 +127,9 @@ namespace neonShooter
                 Exit();
 
 
-            Input.Update(); 
+            Input.Update();
+
+            Grid.Update();
 
             EnemySpawner.Update();
 
@@ -131,7 +141,7 @@ namespace neonShooter
             base.Update(gameTime);
         }
 
-        public static GameTime gt {get; set;}
+        public static GameTime gt { get; set; }
 
         protected override void Draw(GameTime gameTime)
         {
@@ -147,6 +157,7 @@ namespace neonShooter
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.NonPremultiplied);
 
 
+            Grid.Draw(_spriteBatch);
 
             EntityManager.Draw(_spriteBatch);
 
