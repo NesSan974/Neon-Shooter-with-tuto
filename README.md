@@ -12,7 +12,6 @@ l'objectif étant de pouvoir le refaire sans tuto
 Systeme de score  
 Saving systeme  
 Particule acceleration player  
-Wrapping grid  
 
 ## Compile :
 
