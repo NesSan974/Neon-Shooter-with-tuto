@@ -8,6 +8,12 @@ Tuto par entierment fini.
 
 l'objectif étant de pouvoir le refaire sans tuto
 
+## ToDo
+Systeme de score  
+Saving systeme  
+Particule acceleration player  
+Wrapping grid  
+
 ## Compile :
 
 https://docs.monogame.net/articles/packaging_games.html
