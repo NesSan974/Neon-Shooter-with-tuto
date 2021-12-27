@@ -116,7 +116,7 @@ namespace neonShooter
         {
             int width = points.GetLength(0);
             int height = points.GetLength(1);
-            Color color = new Color(30, 30, 139, 85);   // dark blue
+            Color color = new Color(30, 30, 150, 85);   // dark blue
 
             for (int y = 1; y < height; y++)
             {

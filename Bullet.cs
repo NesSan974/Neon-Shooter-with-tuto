@@ -40,7 +40,7 @@ namespace neonShooter
 
             
 
-            Game1.Grid.ApplyExplosiveForce(0.5f * Velocity.Length(), new Vector3 (Position.X, Position.Y, 0), 80);
+            Game1.Grid.ApplyExplosiveForce(3f * Velocity.Length(), new Vector3 (Position, 0f), 80);
         }
     }
 }
