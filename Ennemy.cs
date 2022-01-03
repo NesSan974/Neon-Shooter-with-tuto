@@ -20,6 +20,7 @@ namespace neonShooter
 
 
         private List<IEnumerator<int>> behaviours = new List<IEnumerator<int>>();
+        public int PointValue { get; private set; } = 10;
 
 
 
@@ -137,6 +138,11 @@ namespace neonShooter
             IsExpired = true;
             Sound.Explosion.Play(0.5f, rand.NextFloat(-0.2f, 0.2f), 0);
 
+            //add point to player
+            PlayerStatus.AddPoints(PointValue);
+            PlayerStatus.IncreaseMultiplier();
+
+            //Partile
             float hue1 = rand.NextFloat(0, 6);
             float hue2 = (hue1 + rand.NextFloat(0, 2)) % 6f;
             Color color1 = Extensions.HSVToColor(hue1, 0.5f, 1);

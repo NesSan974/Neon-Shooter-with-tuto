@@ -41,11 +41,20 @@ namespace neonShooter
 
         public override void Update()
         {
+            if (IsDead && framesUntilRespawn == 1)
+            {
+                PlayerStatus.Reset();
+                framesUntilRespawn --;
+                return;
+            }
+
             if (IsDead)
             {
+
                 framesUntilRespawn--;
                 return;
             }
+            
 
 
             const float speed = 8;
@@ -65,7 +74,7 @@ namespace neonShooter
 
                 float randomSpread = rand.NextFloat(-0.04f, 0.04f) + rand.NextFloat(-0.04f, 0.04f);
                 Vector2 vel = MathUtil.FromPolar(aimAngle + randomSpread, 11f);
-                
+
                 //11f = bullet speed  | une coordonné polair, est désigné par le fait que n'importe quel point se fait avec un angle et une distance
 
                 Vector2 offset = Vector2.Transform(new Vector2(25, -8), aimQuat);
@@ -86,17 +95,22 @@ namespace neonShooter
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (!IsDead) {
+            if (!IsDead)
+            {
                 base.Draw(spriteBatch);
-            } else {
+            }
+            else
+            {
                 Game1.Grid.ApplyDirectedForce(new Vector3(0, 0, 5000), new Vector3(Position, 0), 50);
             }
-                
+
         }
 
         public void Kill()
         {
-            framesUntilRespawn = 60;
+            PlayerStatus.RemoveLife();
+            framesUntilRespawn = PlayerStatus.IsGameOver ? 300 : 120;
+
 
             Color yellow = new Color(0.8f, 0.8f, 0.4f);
 

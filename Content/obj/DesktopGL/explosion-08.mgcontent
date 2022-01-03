@@ -3,7 +3,7 @@
   <SourceFile>/home/quentin/Projet/monogame/neonShooter/Content/explosion-08.wav</SourceFile>
   <SourceTime>2013-07-26T17:29:36+02:00</SourceTime>
   <DestFile>/home/quentin/Projet/monogame/neonShooter/Content/bin/DesktopGL/explosion-08.xnb</DestFile>
-  <DestTime>2021-12-09T21:47:43.8130865+01:00</DestTime>
+  <DestTime>2022-01-03T11:39:55.964786+01:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

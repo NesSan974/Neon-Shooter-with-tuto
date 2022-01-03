@@ -15,6 +15,7 @@
     <File>/home/quentin/Projet/monogame/neonShooter/Content/explosion-06.wav</File>
     <File>/home/quentin/Projet/monogame/neonShooter/Content/explosion-07.wav</File>
     <File>/home/quentin/Projet/monogame/neonShooter/Content/explosion-08.wav</File>
+    <File>/home/quentin/Projet/monogame/neonShooter/Content/Font.spritefont</File>
     <File>/home/quentin/Projet/monogame/neonShooter/Content/Music.mp3</File>
     <File>/home/quentin/Projet/monogame/neonShooter/Content/Particle.png</File>
     <File>/home/quentin/Projet/monogame/neonShooter/Content/Player.png</File>
@@ -35,6 +36,7 @@
     <File>/home/quentin/Projet/monogame/neonShooter/Content/Wanderer.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

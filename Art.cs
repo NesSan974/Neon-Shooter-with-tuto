@@ -16,6 +16,7 @@ namespace neonShooter
         public static Texture2D LineParticle { get; private set; }
         public static Texture2D BlackHole { get; private set; }
         public static Texture2D Pixel { get; private set; }
+        public static SpriteFont Font { get; private set; }
 
 
 
@@ -28,6 +29,8 @@ namespace neonShooter
             Pointer = content.Load<Texture2D>("Pointer");
             LineParticle = content.Load<Texture2D>("Particle");
             BlackHole = content.Load<Texture2D>("Black Hole");
+            Font = content.Load<SpriteFont>("Font");
+
             
             Pixel = new Texture2D(Game1._graphics.GraphicsDevice, 1,1);
             Pixel.SetData(new[] { Color.White });

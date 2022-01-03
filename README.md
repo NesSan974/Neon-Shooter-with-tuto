@@ -9,8 +9,7 @@ Tuto par entierment fini.
 l'objectif étant de pouvoir le refaire sans tuto
 
 ## ToDo
-Systeme de score  
-Saving systeme  
+~~Systeme de score / Highscore~~ 
 Particule acceleration player  
 
 ## Compile :
