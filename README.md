@@ -4,12 +4,12 @@ Jeux Monogame réalisé avec le tutoriel : [https://gamedevelopment.tutsplus.com
 
 Tuto par entierment fini.
 
-[lien du .exe](https://drive.google.com/file/d/1NQT5emJuAyQhiJlCGv_FYFPB3HVW5Lgg/view?usp=sharing)
+[lien du .exe](https://drive.google.com/file/d/1NQT5emJuAyQhiJlCGv_FYFPB3HVW5Lgg/view?usp=sharing)  (not updated)
 
 l'objectif étant de pouvoir le refaire sans tuto
 
 ## ToDo
-~~Systeme de score / Highscore~~ 
+~~Systeme de score / Highscore~~  
 Particule acceleration player  
 
 ## Compile :
